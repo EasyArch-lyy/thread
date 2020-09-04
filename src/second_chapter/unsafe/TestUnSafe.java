@@ -8,11 +8,12 @@ public class TestUnSafe {
     static final Unsafe unsafe = Unsafe.getUnsafe();
     //记录变量state在类TestUnsafe中的偏移值
     static final long stateOffset;
-
+    //变量（2.2.3）
     private volatile long state = 0;
 
     static {
         try {
+            //获取state变量在类TestUnsafe中的偏移值（2.2.4）
             stateOffset = unsafe.objectFieldOffset(TestUnSafe.class.getDeclaredField("state"));
         } catch (NoSuchFieldException e) {
             System.out.println(e.getLocalizedMessage());
@@ -21,7 +22,9 @@ public class TestUnSafe {
     }
 
     public static void main(String[] args) {
+        //创建实例并设置state值为1(2.2.5)
         TestUnSafe test = new TestUnSafe();
+        //(2.2.6)
         Boolean success = unsafe.compareAndSwapInt(test, stateOffset, 0, 1);
         System.out.println(success);
     }

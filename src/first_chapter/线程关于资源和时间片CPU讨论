@@ -1,0 +1,3 @@
+wait()是Object类中的方法，释放锁出让系统资源，等待nodify时从当前对象的等待队列回到可运行状态，等待os分配CPU，可以使用interrupt强行打断，立即抛出InterruptedException
+sleep()是Thread类中方法，调用后不释放锁。自动唤醒，时间不到也可以使用interrupt强行打断抛出InterruptedException，Thread.sleep(0)触发操作系统CPU竞争
+yield()是Thread的静态方法，释放当前线程CPU，不会释放锁资源
