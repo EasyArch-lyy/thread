@@ -1,4 +1,4 @@
-package second_chart.volatile_synchorized;
+package second_chapter.volatile_synchorized;
 
 public class ThreadNotSafeCount {
     private Long value;

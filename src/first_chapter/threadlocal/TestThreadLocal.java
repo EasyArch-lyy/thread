@@ -1,4 +1,4 @@
-package first_chert.threadlocal;
+package first_chapter.threadlocal;
 /**
  * threadLocal不具有继承性(父线程设置后子线程获取不到)
  */

@@ -1,4 +1,4 @@
-package second_chart.volatile_synchorized;
+package second_chapter.volatile_synchorized;
 
 public class ThreadSafeInteger2 {
     private volatile int value;

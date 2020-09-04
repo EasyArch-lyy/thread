@@ -1,4 +1,4 @@
-package second_chart.unsafe;
+package second_chapter.unsafe;
 
 import sun.misc.Unsafe;
 

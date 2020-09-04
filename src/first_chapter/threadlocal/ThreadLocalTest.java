@@ -1,4 +1,4 @@
-package first_chert.threadlocal;
+package first_chapter.threadlocal;
 //
 //public class ThreadLocalTest {
 //    //创建ThreadLocal变量
