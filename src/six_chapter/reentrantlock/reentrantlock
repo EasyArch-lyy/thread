@@ -1,0 +1,29 @@
+ReentrantLock:
+    使用AQS实现的可重入独占锁，AQS状态值=0表示锁空闲，>0表示占用，其他线程进入该锁AQS阻塞队列阻塞
+
+    公平锁/非公平锁：由参数决定:(默认非公平锁):
+        public ReentrantLock(){
+            sync = new NonfairSync();
+        }
+        public ReentrantLock(boolean fair){
+            sync = fair ? new FairSync() : new NonfairSync();
+        }
+      Sync直接继承AQS，子类FairSync和NonfairSync实现非公平和公平策略
+      state表示线程获取锁的可重入次数，=0表示未被任何锁持有
+
+
+    获取锁： void lock()
+    public void lock(){
+        //根据ReentrantLock构造函数觉得公平或非策略
+        sync.lock();
+    }
+
+    final void lock(){
+        //使用cas设置状态值
+        if(commpareAndSetState(0,1)
+            setExclusiveOwnerThread(Thread.currentThread());
+        else
+            //调用AQS的acquire方法
+            acquire(1);
+    }
+
