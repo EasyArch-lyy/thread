@@ -1,0 +1,9 @@
+Unsafe类提供了硬件级别原子性操作，都是native方法，使用jni访问C++实现库
+
+AtomicLong类由Bootstarp类加载器加载   Unsafe.getUnsafe()
+
+主要方法：
+long objectFieldOffset(Field field)    返回指定变量所属类的内存偏移地址
+int arrayBaseOffset(Class arrayClass)  获取数组中第一个元素地址
+boolean compareAndSwapLong(Object obj,long offset,long expect,long update)
+                                        比较对象偏移量offset与expect是否相等

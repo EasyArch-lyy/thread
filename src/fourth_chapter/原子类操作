@@ -3,3 +3,5 @@
     缺点：高并发时大量线程竞争同一个原子变量，大量线程失败后无限循环自旋CAS，浪费CPU
 jdk1.8后
   LongAdder(内部维护多个Cell变量，每个中有一个初始值为0的long变量，减少竞争，在争夺失败后，尝试在其他cell变量上尝试CAS)
+继承自Striped64类维护（base,cellsBusy(来自自旋锁,状态值只有0，1),cells三个值）
+LongAddr真实值是base值与Cell数组所有Cell元素中value值的累加  ，默认为0

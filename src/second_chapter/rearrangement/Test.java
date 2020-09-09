@@ -1,6 +1,11 @@
 package second_chapter.rearrangement;
 /**
- * 指令重排
+ * int a=1;
+ * int b=2;
+ * int c=a+b;
+ * c的值依赖于a和b，不受指令重排影响
+ *
+ * 指令重排：
  * 不相互依赖的语句改变顺序（先执行4123）
  */
 public class Test {
@@ -11,7 +16,7 @@ public class Test {
     public static class ReadThread extends Thread {
         public void run(){
             while(!Thread.currentThread().isInterrupted()){
-                if (ready){//1
+                if (ready){                     //1
                     System.out.println(num+num);//2
                 }
             }

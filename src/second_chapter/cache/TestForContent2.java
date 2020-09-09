@@ -1,5 +1,6 @@
 package second_chapter.cache;
 /**
+ * 不使用缓存
  * 跳跃式访问数组，从内存置换过来的缓存行元素还没读取就被替换
  */
 public class TestForContent2 {

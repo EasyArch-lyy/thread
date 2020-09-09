@@ -19,7 +19,15 @@ public class Atomic {
             public void run() {
                 int size = arrayOne.length;
                 for (int i = 0; i < size; ++i) {
+                    /**
+                     * Returns the value of this {@code Integer} as an
+                     * {@code int}.
+                     */
                     if (arrayOne[i].intValue() == 0) {
+                        /**
+                         * Atomically increments by one the current value.
+                         * @return the updated value
+                         */
                         atomicLong.incrementAndGet();
                     }
                 }

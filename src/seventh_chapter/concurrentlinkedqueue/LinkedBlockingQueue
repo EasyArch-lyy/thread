@@ -1,0 +1,9 @@
+独占锁实现阻塞队列
+由ReentrantLock实例控制入队和出队
+(take, poll)条件变量notEmpty维护使用takeLock锁机制  -->takeLock：控制同时只能一条线程从队列头取元素，其他线程等待
+(put, offer)putLock：控制同时只能有一个线程获取锁，再尾部添加元素
+
+notEmpty和notFull内部都有一个条件队列存放进队和出队被阻塞的线程
+
+offer操作: 向队列尾部插入,队列中有空闲则插入成功后返回true，如果队列己满丢弃当前元素然后返回false
+         若插入元素为null抛出NullPointerException

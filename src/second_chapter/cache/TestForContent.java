@@ -1,5 +1,7 @@
 package second_chapter.cache;
-
+/**
+ * 使用缓存情况下存在伪共享时用时
+ */
 public class TestForContent {
 
     static final int LINE_NUM = 1024;

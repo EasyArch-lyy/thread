@@ -1,0 +1,37 @@
+ConcurrentLinkedQueue:
+
+线程安全的无界非阻塞队列，其底层数据结构使用单向链表实现，对于入队和出队操作使用 CAS 来实现线程安全
+头尾都是volatile类型的Node节点元素，默认头尾为指向item为null的哨兵节点，新元素插入队尾，从队头出队
+
+public ConcurrentLindedQueue(){
+    head = tail = new Node<E>(null);
+}
+
+Node节点内部使用volatile修饰变量item，存放节点的值，next存放下个节点
+主要方法实现原理：
+offer：队列末尾添加1个元素，参数为null则抛出NPE异常，使用CAS不会挂起线程
+
+public boolean offer(E e){
+    //e为null抛出空指针异常
+    checkNotNull(e);
+    //构造Node节点，内部调用unsafe.putObject
+    final Node<E> nextNode = new Node<E>(e);
+    //从队尾节点插入
+    for(Node<E> t =tail, p = t ;;){
+        Node<E> q= p.next;
+        //q=null说明为尾节点
+        if(q == null){
+            //使用CAS设置p节点的next节点
+            if(p.casNext(null,newNode)){
+                if(p!= t){
+                    casTail(t,newNode);
+                }
+                return true;
+            }
+        }else if(p == q){
+            p=(t != (t=tail))? t:head;
+        }else {
+            p= (p != t && t!= (t = tail)) ? t : q;
+        }
+    }
+}

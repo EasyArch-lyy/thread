@@ -1,7 +1,10 @@
 package second_chapter.unsafe;
 
 import sun.misc.Unsafe;
-
+/**
+ * 输出：java.lang.ExceptionInInitializerError
+ * 本类的加载器是AppClassLoader，rt包下需要Bootstrap加载器加载
+ */
 public class TestUnSafe {
 
     //获取UnSage的实例(2.2.1)
